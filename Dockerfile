@@ -1,5 +1,9 @@
 FROM python:3.9.1-alpine3.12
 
+# Install any additional packages needed for importers
+ARG APK_PKGS
+ARG PIP_PKGS
+
 RUN apk add --no-cache \
     build-base \
     git \
@@ -7,10 +11,12 @@ RUN apk add --no-cache \
     libxml2-dev \
     libxslt-dev \
     openssh-client \
+    $APK_PKGS \
   && pip install \
     beancount==2.3.3 \
     fava==1.17 \
     flask==1.1.2 \
+    $PIP_PKGS \
   && apk del \
     build-base \
     libxml2-dev \
