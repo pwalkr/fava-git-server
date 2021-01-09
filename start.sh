@@ -28,6 +28,12 @@ python /usr/local/bin/webhook.py &
 { set +x; } 2>/dev/null
 sleep 1
 
+# Start inode watcher
+set -x
+/usr/local/bin/imonitor.sh &
+{ set +x; } 2>/dev/null
+sleep 1
+
 cd "$REPOSITORY_ROOT"
 export PYTHONPATH=.
 set -x

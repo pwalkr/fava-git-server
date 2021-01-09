@@ -23,6 +23,7 @@ RUN apk add --no-cache \
     libxslt-dev
 
 COPY askpass.sh /usr/local/bin/
+COPY imonitor.sh /usr/local/bin/
 COPY repo.sh /usr/local/bin/
 COPY start.sh /
 COPY webhook.py /usr/local/bin/

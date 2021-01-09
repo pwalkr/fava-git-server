@@ -22,6 +22,9 @@ push() {
 
 pull() {
     upstream="$(git rev-parse --abbrev-ref "@{upstream}")"
+    if [ "$(git rev-parse HEAD)" = "$(git rev-parse "$upstream")" ]; then
+        return
+    fi
     set -x
     git fetch --prune || ecode=1
     git clean -xfd || ecode=1
