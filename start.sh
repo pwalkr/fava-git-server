@@ -22,6 +22,16 @@ if [ -z "$(ls "$REPOSITORY_ROOT")" ]; then
     { set +x; } 2>/dev/null
 fi
 
+if [ "$GIT_NAME" ]; then
+    export GIT_AUTHOR_NAME="$GIT_NAME"
+    export GIT_COMMITTER_NAME="$GIT_NAME"
+fi
+
+if [ "$GIT_EMAIL" ]; then
+    export GIT_AUTHOR_EMAIL="$GIT_EMAIL"
+    export GIT_COMMITTER_EMAIL="$GIT_EMAIL"
+fi
+
 # Start monitor to listen for webhook and file events
 set -x
 python /usr/local/bin/monitor.py &

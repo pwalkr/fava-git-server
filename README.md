@@ -12,6 +12,8 @@ Build the container
 Run to manage a pre-fetched clone on default listening ports
 
     docker run -d -p 5000:5000 -p 5001:5001 \
+        -e GIT_NAME=Me \
+        -e GIT_EMAIL=me@example.com \
         -v $HOME/.ssh:/root/.ssh:ro \
         -v $PWD:/data \
         local/fava main.beancount
@@ -32,6 +34,8 @@ For a local test, you can use curl:
 
     # Git authentication
     GIT_REPO      # Repository to clone (if not already mounted at REPOSITORY_ROOT)
+    GIT_NAME      # Name to use for committing local changes
+    GIT_EMAIL     # Email to use for committing local changes
     GIT_USER      # Username for git if using HTTP auth
     GIT_PASSWORD  # Password for git if using HTTP auth
     SSH_KEY       # SSH private key for git if using SSH auth
