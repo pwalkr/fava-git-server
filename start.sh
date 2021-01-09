@@ -22,15 +22,9 @@ if [ -z "$(ls "$REPOSITORY_ROOT")" ]; then
     { set +x; } 2>/dev/null
 fi
 
-# Start webhook to listen for push operations
+# Start monitor to listen for webhook and file events
 set -x
-python /usr/local/bin/webhook.py &
-{ set +x; } 2>/dev/null
-sleep 1
-
-# Start inode watcher
-set -x
-/usr/local/bin/imonitor.sh &
+python /usr/local/bin/monitor.py &
 { set +x; } 2>/dev/null
 sleep 1
 

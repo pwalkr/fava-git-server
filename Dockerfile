@@ -23,10 +23,7 @@ RUN apk add --no-cache \
     libxslt-dev
 
 COPY askpass.sh /usr/local/bin/
-COPY imonitor.sh /usr/local/bin/
-COPY repo.sh /usr/local/bin/
 COPY start.sh /
-COPY webhook.py /usr/local/bin/
 
 ENV GIT_ASKPASS=/usr/local/bin/askpass.sh
 ENV REPOSITORY_ROOT=/data
@@ -39,3 +36,4 @@ EXPOSE $WEBHOOK_PORT
 VOLUME $REPOSITORY_ROOT
 
 ENTRYPOINT ["/start.sh"]
+COPY monitor.py /usr/local/bin/
