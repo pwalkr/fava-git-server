@@ -7,6 +7,7 @@ ARG PIP_PKGS
 RUN apk add --no-cache \
     build-base \
     git \
+    git-lfs \
     libxml2-dev \
     libxslt-dev \
     openssh-client \
