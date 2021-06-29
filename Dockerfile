@@ -13,8 +13,9 @@ RUN apk add --no-cache \
     openssh-client \
     $APK_PKGS \
   && pip install \
-    beancount==2.3.3 \
-    fava==1.17 \
+    beancount==2.3.4 \
+    fava==1.19 \
+    flask==1.1.4 \
     $PIP_PKGS \
   && apk del \
     build-base \
