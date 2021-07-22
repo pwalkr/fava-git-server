@@ -12,13 +12,13 @@ if [ "$SSH_KEY" ]; then
 fi
 
 # If repository is not populated, clone
-if [ -z "$(ls "$REPOSITORY_ROOT")" ]; then
+if [ -z "$(ls "$REPOSITORY_ROOT" 2>/dev/null)" ]; then
     if [ -z "$GIT_REPO" ]; then
         echo "Please set GIT_REPO to something we can clone"
         exit 1
     fi
     set -x
-    git clone --recurse-submodules "$GIT_REPO" "$REPOSITORY_ROOT"
+    git clone --recurse-submodules "$GIT_REPO" "$REPOSITORY_ROOT" || exit 1
     { set +x; } 2>/dev/null
 fi
 
